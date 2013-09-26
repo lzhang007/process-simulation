@@ -2,14 +2,36 @@
 #define PROCESS_H_
 
 #include<stdio.h>
+#include<stdbool.h>
 
-#define MEMSIZE 100 // memory size
-#define PAGESIZE 
-typedef struct 
+#define MEMSIZE 1000 //memory size
+#define PAGESIZE 10 //one page size
+#define TIMEPIECE 100 //time piece
+#define SLEEPTIEM 5 //sleep time
+
+typedef struct memory
+{
+    unsigned int mid; //memory id
+    bool isUsed;//is used?
+}Memory; //memory type
+
+typedef struct page
+{
+    
+}Page;//page type
+
+
+
+
+typedef struct pitem
 {
     unsigned int pid;
-    
+    int procSize;
+    Page *pageList;
+}Pitem;//process type
 
-}Proc;
+Proc *runList = NULL;
+Proc *blockList = NULL;
+Proc *waitList = NULL;
 
 #endif
