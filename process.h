@@ -29,15 +29,27 @@ struct scheduledInfo//process scheduled information
 
 struct contralInfo//process contral information
 {
+    int procSize;
     int textAddr;
     int dataAddr;
     int resourceList[5];
 };
 
+struct pageTable
+{
+
+};
+struct quickPageTable
+{
+
+};
 
 typedef struct 
 {   
-    
+    struct procid identifier;//pid
+
+    struct pageTable *pageList;
+    struct quickPageTable *quickList;
 }ProcItem;
 
 
