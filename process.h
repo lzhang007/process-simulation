@@ -1,36 +1,45 @@
 #ifndef PROCESS_H_
 #define PROCESS_H_
 
-#include<stdio.h>
+#include<stdbool.h>
 
-#define MEMSIZE 1000 //memory size
-#define PAGESIZE 10 //one page size
-#define TIMEPIECE 100 //time piece
-#define SLEEPTIEM 5 //sleep time
-
-typedef struct memory
+struct procid //proc identifier
 {
-    unsigned int mid; //memory id
-    bool isUsed;//is used?
-}Memory; //memory type
+    int pid;
+    int uid;
+    int ppid;
+};
 
-typedef struct page
+struct cpuStatus//cpu status,not use here
 {
+    int pc;//program counter
+    int proRegister[8];//general register
+    int psw[10];//program status word
+    int *sp;//user stack pointer
+};
+
+struct scheduledInfo//process scheduled information
+{
+    int procStatus;//process status
+    int procPriority;//process priority
+    int waitTime;
+    int cpuTime;//other scheduled information
+    int event;//blocked reason
+};
+
+struct contralInfo//process contral information
+{
+    int textAddr;
+    int dataAddr;
+    int resourceList[5];
+};
+
+
+typedef struct 
+{   
     
-}Page;//page type
+}ProcItem;
 
 
-
-
-typedef struct pitem
-{
-    unsigned int pid;
-    int procSize;
-    Page *pageList;
-}Pitem;//process type
-
-Proc *runList = NULL;
-Proc *blockList = NULL;
-Proc *waitList = NULL;
 
 #endif
